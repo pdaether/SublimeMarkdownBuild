@@ -24,7 +24,20 @@ class MarkdownBuild(sublime_plugin.WindowCommand):
         html += "<body>"
         html += md
         html += "</body></html>"
-        output = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
-        output.write(html.encode('UTF-8'))
-        output.close()
-        desktop.open(output.name)
+        s = sublime.load_settings("Preferences.sublime-settings")
+        output_in_same_dir = s.get("markdownbuild_output_same_dir", 0)
+        if output_in_same_dir:
+            path = os.path.dirname(file_name)
+            file_name = os.path.basename(file_name)
+            base_name = os.path.splitext(file_name)[0]
+            html_file = path + "/" + base_name + ".html"
+            f = open(html_file, 'w')
+            f.write(html.encode('UTF-8'))
+            f.close()
+            desktop.open(html_file)
+        else:
+            output = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
+            output.write(html.encode('UTF-8'))
+            output.close()
+            print output.name
+            desktop.open(output.name)
