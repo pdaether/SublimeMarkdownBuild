@@ -15,6 +15,20 @@ Install manually
 1. Download the repo
 2. Copy everything in the repo to a folder named "MarkdownBuild" under the package folder of SublimeText 2 (create it if it doesn't exist)
 
+## Configuration
+
+_MarkdownBuild_ works out of the box without any configuration.
+The generated html file will be saved in the temp folder of your operating system.
+
+But if you set `markdownbuild_output_same_dir` to `true`, then the generated html will be saved in the same directory as the markdown file. This is just usefull if you want to store the resulting html permanently.
+
+	{
+		"markdownbuild_output_same_dir": true
+	}
+
+In this case the file will be named like the original markdown file but with the _.html_ extension.
+
+
 ## Usage
 
 Originally this plugin is named "SublimeMarkdown" which features automatic bullet points, numbered lists etc. Now the bullet points functionality is extracted to a separated plugin named "SublimeBullet" <https://github.com/erinata/SublimeBullet> 
