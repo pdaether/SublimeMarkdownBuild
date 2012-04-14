@@ -3,7 +3,6 @@ import sublime_plugin
 import markdown_python
 import os
 import tempfile
-import desktop
 
 
 class MarkdownBuild(sublime_plugin.WindowCommand):
@@ -34,10 +33,9 @@ class MarkdownBuild(sublime_plugin.WindowCommand):
             f = open(html_file, 'w')
             f.write(html.encode('UTF-8'))
             f.close()
-            desktop.open(html_file)
+            self.window.run_command('open_url', {"url": "file://" + html_file})
         else:
             output = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
             output.write(html.encode('UTF-8'))
             output.close()
-            print output.name
-            desktop.open(output.name)
+            self.window.run_command('open_url', {"url": "file://" + output.name})
