@@ -17,6 +17,7 @@ Install manually
 
 ## Configuration
 
+_MarkdownBuild_ works out of the box without any configuration.
 The generated html file will be saved in the temp folder of your operating system.
 
 But if you set `markdownbuild_output_same_dir` to `true`, then the generated html will be saved in the same directory as the markdown file. This is just usefull if you want to store the resulting html permanently.
@@ -24,6 +25,9 @@ But if you set `markdownbuild_output_same_dir` to `true`, then the generated htm
 	{
 		"markdownbuild_output_same_dir": true
 	}
+
+In this case the file will be named like the original markdown file but with the _.html_ extension.
+
 
 ## Usage
 
